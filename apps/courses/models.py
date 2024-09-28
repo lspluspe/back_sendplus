@@ -25,6 +25,27 @@ class Ciclo(models.Model):
     class Meta:
         db_table = 'cicle_course'
 
+class CoursesNames(models.Model):
+    name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+    information = models.JSONField(default=dict)
+
+    class Meta:
+        db_table = 'courses_names'
+
+class CourseDetail(models.Model):
+    name = models.CharField(max_length=255)
+    ciclo = models.ForeignKey('Ciclo', on_delete=models.CASCADE)
+    tipo_modalidad = models.ForeignKey('Modalidad', on_delete=models.CASCADE)
+    courses_name = models.ForeignKey('CoursesNames', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+    information = models.JSONField(default=dict)
+
+    class Meta:
+        db_table = 'courses_detail'
+
 class Courses(models.Model):
 
     name = models.CharField(max_length=200)
@@ -59,29 +80,12 @@ class Modules(models.Model):
     module_number = models.IntegerField(null=True)
     module_description = models.CharField(max_length=400)
     module_detail = models.JSONField()
-    diplomado = models.ForeignKey('Courses', on_delete=models.CASCADE, null=True)
+    course = models.ForeignKey('Courses', on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
 
     class Meta:
         db_table = 'modules'
 
-class CoursesNames(models.Model):
-    name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True, blank=True)
-    information = models.JSONField(default=dict)
 
-    class Meta:
-        db_table = 'courses_names'
 
-class CourseDetail(models.Model):
-    name = models.CharField(max_length=255)
-    ciclo = models.ForeignKey('Ciclo', on_delete=models.CASCADE)
-    tipo_modalidad = models.ForeignKey('Modalidad', on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True, blank=True)
-    information = models.JSONField(default=dict)
-
-    class Meta:
-        db_table = 'courses_detail'

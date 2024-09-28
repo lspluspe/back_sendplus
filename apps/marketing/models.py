@@ -16,16 +16,16 @@ class Events(models.Model):
     class Meta:
         db_table = 'events'
 
-class Events(models.Model):
+class DownloadEvents(models.Model):
     names = models.CharField(max_length=100),
     last_names = models.CharField(max_length=150),
     dni = models.CharField(max_length=15),
     email = models.CharField(max_length=150),
     phone = models.CharField(max_length=15),
     detail = models.JSONField(default=dict)
-    event = models.ForeignKey(Events, on_delete=models.CASCADE)
+    event = models.ForeignKey('Events', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
 
     class Meta:
-        db_table = 'events'
+        db_table = 'downloads_events'

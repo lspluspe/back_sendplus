@@ -28,10 +28,10 @@ class NavBar(models.Model):
 
 class UserRol(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    rol = models.ForeignKey(NavBar, on_delete=models.CASCADE)
+    rol = models.ForeignKey('NavBar', on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
 
     class Meta:
-        db_table = 'nav_bar'
+        db_table = 'user_rol'
