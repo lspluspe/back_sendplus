@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'apps.marketing'
 
 ]
+TOKEN_EXPIRED_AFTER_SECONDS = 28800
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

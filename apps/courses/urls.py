@@ -1,6 +1,10 @@
 from django.urls import path
 
-# list_all_teacher = TeacherApiViewSet.as_view({'get': 'list_all_teachers'})
-urlpatterns = [
+from apps.courses.api.information_couse_api import InformationCouseViewSet
 
+
+urlpatterns = [
+    path('listar/modalidad/', InformationCouseViewSet.as_view({'get': 'list_modalidad'})),
+    path('listar/ciclos/', InformationCouseViewSet.as_view({'get': 'list_ciclos'})),
+    path('listar/nombres-cursos/', InformationCouseViewSet.as_view({'get': 'list_courses_names'})),
     ]
