@@ -77,6 +77,7 @@ INSTALLED_APPS = [
 TOKEN_EXPIRED_AFTER_SECONDS = 28800
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
