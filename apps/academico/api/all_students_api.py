@@ -28,11 +28,11 @@ class StudentsInscripViewSet(Authentication, viewsets.ViewSet):
         # countt = UserProfile.objects.filter(is_student=True).all().count()
         #
         # paginacion = Paginator(students_serializer, cantidad)
-        if len(paginacion.page(1)) == 0:
-            return JsonResponse({'success': False, 'message': 'successful', 'data': None},
-                                status=status.HTTP_400_BAD_REQUEST)
-        else:
-            return JsonResponse({'success': True, 'cantidad': countt, 'data': (list(paginacion.page(pagina)))},
-                                status=status.HTTP_200_OK)
+        # if len(paginacion.page(1)) == 0:
+        #     return JsonResponse({'success': False, 'message': 'successful', 'data': None},
+        #                         status=status.HTTP_400_BAD_REQUEST)
+        # else:
+        #     return JsonResponse({'success': True, 'cantidad': countt, 'data': (list(paginacion.page(pagina)))},
+        #                         status=status.HTTP_200_OK)
 
         return JsonResponse({'success': 'true','message':'Se listo correctamente.', 'data':mod }, status=status.HTTP_200_OK)
