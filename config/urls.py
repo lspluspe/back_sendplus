@@ -15,11 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import path, include
-from django.views.generic import RedirectView
+
+def main_view(request):
+    return JsonResponse({'message': 'server on'})
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', main_view, name='/'),
     path('api/academico/', include('apps.academico.urls')),
     path('api/cobranza/', include('apps.cobranza.urls')),
     path('api/courses/', include('apps.courses.urls')),
@@ -29,5 +33,4 @@ urlpatterns = [
     path('api/auth/', include('apps.auth.urls')),
     path('api/ventas/', include('apps.sales.urls')),
     path('api/marketing/', include('apps.marketing.urls')),
-    path('', RedirectView.as_view(url='/api/')),
 ]
